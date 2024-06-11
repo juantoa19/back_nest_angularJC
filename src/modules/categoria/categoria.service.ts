@@ -9,10 +9,14 @@ export class CategoriaService {
 
   constructor(@Inject('CATEGORIA_REPOSITORY') private categoriaRepository: Repository<Categoria>) { }
 
-
-  create(createCategoriaDto: CreateCategoriaDto) {
-    return 'This action adds a new categoria';
+  async create(createCategoriaDto: CreateCategoriaDto){
+    const categoria = new Categoria()
+    categoria.nombreCategoria=createCategoriaDto.nombreCategoria
+    
+    return await this.categoriaRepository.save(categoria)
   }
+
+
 
   async findAll() {
     return await this.categoriaRepository.find();
