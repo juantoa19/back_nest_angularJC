@@ -7,6 +7,10 @@ export class Categoria {
     id: number;
     @Column()
     nombreCategoria: string;
+
+    @Column({ nullable: true })
+    detalle: string; 
+    
     @OneToMany(()=>Producto, (prod)=>prod.categoria)
     producto:Producto[]
 
